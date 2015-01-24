@@ -1,6 +1,7 @@
 # VERSION 1.0
 
-FROM gothug/jdk-oracle
+FROM gothug/jdk-oracle #(jdk 7, built using this Docker file: https://github.com/Krijger/docker-cookbooks/blob/master/jdk7-oracle/Dockerfile)
+
 
 MAINTAINER Vasily Kozhukhovskiy
 
