@@ -28,13 +28,12 @@ USER postgres
 # Note: here we use ``&&\`` to run commands one after the other - the ``\``
 #       allows the RUN command to span multiple lines.
 RUN    /etc/init.d/postgresql start &&\
-    psql --command "CREATE USER geek WITH PASSWORD 'q1';" &&\
+    psql --command "CREATE USER geek WITH SUPERUSER PASSWORD 'q1';" &&\
     createdb -O geek geek
 
 # Adjust PostgreSQL configuration so that remote connections to the
 # database are possible.
 RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.3/main/pg_hba.conf
-# RUN echo "host all  all    192.168.0.0/16  md5" >> /etc/postgresql/9.3/main/pg_hba.conf
 
 # And add ``listen_addresses`` to ``/etc/postgresql/9.3/main/postgresql.conf``
 RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
