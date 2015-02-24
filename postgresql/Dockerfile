@@ -28,8 +28,8 @@ USER postgres
 # Note: here we use ``&&\`` to run commands one after the other - the ``\``
 #       allows the RUN command to span multiple lines.
 RUN    /etc/init.d/postgresql start &&\
-    psql --command "ALTER ROLE postgres WITH PASSWORD 'q1';" &&\
-    createdb -O postgres docker
+    psql --command "CREATE USER geek WITH PASSWORD 'q1';" &&\
+    createdb -O geek geek
 
 # Adjust PostgreSQL configuration so that remote connections to the
 # database are possible.
